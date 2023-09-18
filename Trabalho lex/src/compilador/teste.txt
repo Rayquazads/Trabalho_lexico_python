@@ -1,0 +1,11 @@
+import random
+
+# Gera 5 números aleatórios entre 1 e 100
+numeros = [random.randint(1, 100) for _ in range(5)]
+
+# Funcao para verificar se um número e par ou impar
+def par_ou_impar(numero):
+    if numero % 2 == 0:
+        return "par"
+    else:
+        return "impar"
