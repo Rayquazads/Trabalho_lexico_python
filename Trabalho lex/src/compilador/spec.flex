@@ -44,21 +44,22 @@ doubleDot = ":"
 {blocoComentario}       {imprimir ("COMENTARIO(BLOCO)",yytext()); return COMENTARIO; }
 {linhaComentario}       {imprimir ("COMENTARIO(LINHA)",yytext()); return COMENTARIO; }
 {terminador}            {imprimir ("Terminador", yytext()); return TERMINADOR;}
-{lparent}               {imprimir ("lparent", yytexte()); return LPARENT;}
-{rparent}               {imprimir ("rparent", yytexte()); return RPARENT;}
-{igualdade}             {imprimir ("igualdade", yytexte()); return IGUALDADE;}
-{igual}                 {imprimir ("igual", yytexte()); return IGUAL;}
-{mod}                   {imprimir ("mod", yytexte()); return MOD;}
-{soma}                  {imprimir ("soma", yytexte()); return SOMA;}
-{sub}                   {imprimir ("sub", yytexte()); return SUB;}
-{div}                   {imprimir ("div", yytexte()); return DIV;}
-{mult}                  {imprimir ("mult", yytexte()); return MULT;}
-{dot}                   {imprimir ("dot", yytexte()); return DOT;}
-{rcol}                  {imprimir ("rcol", yytexte()); return RCOL;}
-{lcol}                  {imprimir ("lcol", yytexte()); return LCOL;}
-{virg}                  {imprimir ("virg", yytexte()); return VIRG;}
-{underline}             {imprimir ("underline", yytexte()); return UNDERLINE;}
-{doubleDot}             {imprimir ("doubleDot", yytexte()); return DOUBLEDOT;}
+{lparent}               {imprimir ("lparent", yytext()); return LPARENT;}
+{rparent}               {imprimir ("rparent", yytext()); return RPARENT;}
+{igualdade}             {imprimir ("igualdade", yytext()); return IGUALDADE;}
+{igual}                 {imprimir ("igual", yytext()); return IGUAL;}
+{mod}                   {imprimir ("mod", yytext()); return MOD;}
+{soma}                  {imprimir ("soma", yytext()); return SOMA;}
+{sub}                   {imprimir ("sub", yytext()); return SUB;}
+{div}                   {imprimir ("div", yytext()); return DIV;}
+{mult}                  {imprimir ("mult", yytext()); return MULT;}
+{dot}                   {imprimir ("dot", yytext()); return DOT;}
+{rcol}                  {imprimir ("rcol", yytext()); return RCOL;}
+{lcol}                  {imprimir ("lcol", yytext()); return LCOL;}
+{virg}                  {imprimir ("virg", yytext()); return VIRG;}
+{underline}             {imprimir ("underline", yytext()); return UNDERLINE;}
+{doubleDot}             {imprimir ("doubleDot", yytext()); return DOUBLEDOT;}
+\"[^\"]*\"              {imprimir ("string", yytext()); return STEXTO;} //reconhecer string delimitadas por aspas duplas
 {branco}                {return BRANCO; }
 
 .                       {imprimir ("<<CARACTERE INVÁLIDO>>  ",yytext()); return ERROR; }
