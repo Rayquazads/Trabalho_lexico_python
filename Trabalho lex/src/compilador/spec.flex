@@ -12,13 +12,13 @@ import static compilador.Token.*;
 %class Lexer
 %type Token
 
-nomeVariavel = [a-zA-Z][_a-zA-Z0-9]*
+nomeVariavel = [_a-zA-Z][_a-zA-Z0-9]*
 inteiro = [0-9]+
 decimal = [0-9]+["."]+[0-9]+
 branco = [\t\r\n ]+
-blocoComentario = "/*" ~"*/"
+blocoComentario = "'''" ~"'''" | "\"\"\"" ~"\"\"\""
 linhaComentario = {branco}* "#" .*
-palavraChave = "if" | "class" | "int" | "while" | "do" | "input" | "printf" | "def" | "len" | "return" | "None" | "not" | "is" | "else" | "sum" | "f" | "import" | "in" | "range" | "for"
+palavraChave = "if" | "class" | "int" | "while" | "do" | "input" | "printf" | "def" | "len" | "return" | "None" | "not" | "is" | "else" | "sum" | "f\"" | "import" | "in" | "range" | "for"
 terminador = ";"
 lparent = "("
 rparent = ")"

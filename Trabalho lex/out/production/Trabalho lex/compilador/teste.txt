@@ -1,9 +1,16 @@
-import random
+def soma(a, b):
+        return a + b
 
-    numeros = [1, 2, 3, 4, 5]
+    resultado = soma(5, 3)
 
-    for numero in numeros:
-        if numero % 2 == 0:
-            print(f"{numero} é par")
-        else:
-            print(f"{numero} é ímpar")
+    if resultado > 10:
+        print("Resultado é maior que 10")
+    else:
+        print(f"Resultado é menor ou igual a 10")
+
+        """dsaidhaisuhiashduihasud
+        saidhaisdh
+        asduhasiudhaus"""
+        f = 10
+
+        #fhisaufhis                                aisuhdiaushdiuahsdiuahsduhas
