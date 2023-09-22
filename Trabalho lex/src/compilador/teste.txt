@@ -1,16 +1,9 @@
-def soma(a, b):
-        return a + b
+# Solicita ao usuário para inserir dois números
+numero1 = float(input("Digite o primeiro número: "))
+numero2 = float(input("Digite o segundo número: "))
 
-    resultado = soma(5, 3)
+# Calcula a soma dos dois números
+soma = numero1 + numero2
 
-    if resultado > 10:
-        print("Resultado é maior que 10")
-    else:
-        print(f"Resultado é menor ou igual a 10")
-
-        """dsaidhaisuhiashduihasud
-        saidhaisdh
-        asduhasiudhaus"""
-        f = 10
-
-        #fhisaufhis                                aisuhdiaushdiuahsdiuahsduhas
+# Exibe o resultado
+print(f"A soma de {numero1} e {numero2} é igual a {soma}")

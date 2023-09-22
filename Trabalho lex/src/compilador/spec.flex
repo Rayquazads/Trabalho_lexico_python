@@ -18,7 +18,7 @@ decimal = [0-9]+["."]+[0-9]+
 branco = [\t\r\n ]+
 blocoComentario = "'''" ~"'''" | "\"\"\"" ~"\"\"\""
 linhaComentario = {branco}* "#" .*
-palavraChave = "if" | "class" | "int" | "while" | "do" | "input" | "printf" | "def" | "len" | "return" | "None" | "not" | "is" | "else" | "sum" | "f\"" | "import" | "in" | "range" | "for"
+palavraChave = "if" | "class" | "int" | "while" | "do" | "float"| "input" | "printf" | "def" | "len" | "return" | "None" | "not" | "is" | "else" | "sum" | "import" | "in" | "range" | "for"
 terminador = ";"
 lparent = "("
 rparent = ")"
@@ -35,6 +35,7 @@ mult = "*"
 dot = "."
 virg = ","
 doubleDot = ":"
+stexto = \"[^\"]*\"
 %%
 
 {palavraChave}          {imprimir ("PALAVRA-CHAVE",yytext()); return PALAVRA_CHAVE; }
@@ -59,7 +60,7 @@ doubleDot = ":"
 {virg}                  {imprimir ("virg", yytext()); return VIRG;}
 {underline}             {imprimir ("underline", yytext()); return UNDERLINE;}
 {doubleDot}             {imprimir ("doubleDot", yytext()); return DOUBLEDOT;}
-\"[^\"]*\"              {imprimir ("string", yytext()); return STEXTO;} //reconhecer string delimitadas por aspas duplas
+{stexto}                {imprimir ("string", yytext()); return STEXTO;} //reconhecer string delimitadas por aspas duplas
 {branco}                {return BRANCO; }
 
 .                       {imprimir ("<<CARACTERE INVÁLIDO>>  ",yytext()); return ERROR; }
