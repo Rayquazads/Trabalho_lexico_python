@@ -12,29 +12,43 @@ import static compilador.Token.*;
 %class Lexer
 %type Token
 
-nomeVariavel = [_a-zA-Z][_a-zA-Z0-9]*
+nomeVariavel = [a-zA-Z][_a-zA-Z0-9]*
 inteiro = [0-9]+
 decimal = [0-9]+["."]+[0-9]+
 branco = [\t\r\n ]+
 blocoComentario = "'''" ~"'''" | "\"\"\"" ~"\"\"\""
 linhaComentario = {branco}* "#" .*
-palavraChave = "if" | "class" | "int" | "while" | "do" | "float"| "input" | "printf" | "def" | "len" | "return" | "None" | "not" | "is" | "else" | "sum" | "import" | "in" | "range" | "for"
+palavraChave = "if"| "elif" |{nomeVariavel}{dot}{nomeVariavel}| "url" | "switch"| "case" | "try" | "except" | "opne" | "class" | "break" | "int" | "while" | "do" | "float"| "input" | "bool" | "string" | "long" | "printf" | "append "| "print" | "def" | "len" | "return" | "None" | "not" | "is" | "else" | "sum" | "import" | "in"| "pass" | "range" | "for" | "true" | "false" | "var"
 terminador = ";"
 lparent = "("
 rparent = ")"
 lcol = "["
 rcol = "]"
+lbrace = "{"
+rbrace = "}"
+aspas =  \"
+aspasSimples = "'"
 underline = "_"
 igualdade = "=="
+notequal = "!="
+menorque = "<="
+maiorque = ">="
+til = "~"
+doublestar = "**"
+circunflexo = "^"
+comercial = "&"
 igual = "="
-mod = "%"
+porcentagem = "%"
 soma = "+"
 sub = "-"
 div = "/"
+ou = "|"
+maior = ">"
+menor = "<"
 mult = "*"
 dot = "."
 virg = ","
-doubleDot = ":"
+colon = ":"
 stexto = \"[^\"]*\"
 %%
 
@@ -43,13 +57,27 @@ stexto = \"[^\"]*\"
 {inteiro}               {imprimir ("NUMERO INTEIRO",yytext()); return INT; }
 {decimal}               {imprimir ("NUMERO DECIMAL",yytext()); return DEC; }
 {blocoComentario}       {imprimir ("COMENTARIO(BLOCO)",yytext()); return COMENTARIO; }
+{aspas}                 {imprimir ("aspas",yytext()); return ASPAS; }
+{aspasSimples}          {imprimir ("aspasSimples",yytext()); return ASPASSIMPLES; }
 {linhaComentario}       {imprimir ("COMENTARIO(LINHA)",yytext()); return COMENTARIO; }
 {terminador}            {imprimir ("Terminador", yytext()); return TERMINADOR;}
 {lparent}               {imprimir ("lparent", yytext()); return LPARENT;}
 {rparent}               {imprimir ("rparent", yytext()); return RPARENT;}
+{rbrace}                {imprimir ("rbrace", yytext()); return RBRACE;}
+{lbrace}                {imprimir ("lbrace", yytext()); return LBRACE;}
+{doublestar}            {imprimir ("doublestar", yytext()); return DOUBLESTAR;}
+{menor}                 {imprimir ("menor", yytext()); return MENOR;}
+{comercial}             {imprimir ("comercial", yytext()); return COMERCIAL;}
+{maior}                 {imprimir ("maior", yytext()); return MAIOR;}
+{notequal}              {imprimir ("notequal", yytext()); return NOTEQUAL;}
 {igualdade}             {imprimir ("igualdade", yytext()); return IGUALDADE;}
+{menorque}              {imprimir ("menor que", yytext()); return MENORQUE;}
+{maiorque}              {imprimir ("maior que", yytext()); return MAIORQUE;}
+{til}                   {imprimir ("til", yytext()); return TIL;}
+{circunflexo}           {imprimir ("circunflexo", yytext()); return CIRCUNFLEXO;}
+{ou}                    {imprimir ("ou", yytext()); return OU;}
 {igual}                 {imprimir ("igual", yytext()); return IGUAL;}
-{mod}                   {imprimir ("mod", yytext()); return MOD;}
+{porcentagem}           {imprimir ("porcentagem", yytext()); return PORCENTAGEM;}
 {soma}                  {imprimir ("soma", yytext()); return SOMA;}
 {sub}                   {imprimir ("sub", yytext()); return SUB;}
 {div}                   {imprimir ("div", yytext()); return DIV;}
@@ -59,7 +87,7 @@ stexto = \"[^\"]*\"
 {lcol}                  {imprimir ("lcol", yytext()); return LCOL;}
 {virg}                  {imprimir ("virg", yytext()); return VIRG;}
 {underline}             {imprimir ("underline", yytext()); return UNDERLINE;}
-{doubleDot}             {imprimir ("doubleDot", yytext()); return DOUBLEDOT;}
+{colon}                 {imprimir ("ponto duplo", yytext()); return COLON;}
 {stexto}                {imprimir ("string", yytext()); return STEXTO;} //reconhecer string delimitadas por aspas duplas
 {branco}                {return BRANCO; }
 
